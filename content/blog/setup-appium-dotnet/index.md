@@ -73,6 +73,7 @@ Alternative paste these in `.csproj` file, then run `dotnet restore`
 
 ## Create first android test:
 Create `FirstAndroidTest.cs`
+<font size=2>
 ```csharp
 using System;
 using System.IO;
@@ -118,6 +119,7 @@ namespace AppiumDotnetClient
     }
 }
 ```
+</font>
 
 >**(1)** Appium supports both UIAutomator2 and Espresso for Android UI Automation test, we'll be using UIAutomator2 this time.  
 
@@ -150,6 +152,7 @@ The test app launch and our test run.
 
 ## Create iOS first test
 Create `FirstIOSTest.cs`
+<font size=2>
 ```csharp
 using System;
 using System.IO;
@@ -195,6 +198,7 @@ namespace AppiumDotnetClient
 }
 
 ```
+</font>
 
 > **(1)** XCUITest is used for testing iOS	
 

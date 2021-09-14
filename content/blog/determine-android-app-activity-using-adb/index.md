@@ -8,16 +8,24 @@ date: '2021-09-04 00:30:15'
 
 When setup Appium driver options for Android, we need to specify app activity. Something like this:
 
+<font size=2>
+
 ```csharp
 _driverOptions.AddAdditionalCapability("appActivity", "*.MainActivity");
 ```
+</font>
+
 Or if app has a `SplashActivity` then we need to wait for the `MainActivity`
+
+<font size=2>
 
 ```csharp
 _driverOptions.AddAdditionalCapability("appWaitActivity", "*.MainActivity");
 ```
+</font>
 
 It is quite common for app main activity to be `com.example.app.mainActivity`. However, this is not always the case. Sometimes, main activity can be named differently.
+
 
 One example of this is apps that built using xamarin, by defaut, if no activity name is specified by developer. The main activity will be appended with a hash to help avoiding namespace conflict. More details can be read [here](https://docs.microsoft.com/en-au/xamarin/android/platform/android-manifest).
 
@@ -64,14 +72,17 @@ Then run this command
 dumpsys window windows | grep -E 'mCurrentFocus'    
 ```
 
-This will output the name of the current focus activity:
-Example output
+This will output the name of the current focus activity.  
+
+Example output:
+<font size=2>
+
 ```bash
 OnePlus3T:/ $ dumpsys window windows | grep -E 'mCurrentFocus' 
   mCurrentFocus=Window{844329b u0 com.whatsapp/com.whatsapp.registration.EULA}
 OnePlus3T:/ $ 
 ```
-
+</font>
 
 
 
