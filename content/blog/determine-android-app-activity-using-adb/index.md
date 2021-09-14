@@ -38,15 +38,12 @@ Without the correct activity name specified, Appium will throw this error:
 
 ## Determine running activity using `adb`
 
-<br/>
-
 ### Install adb
 On Mac 
 ```bash
 brew install android-platform-tools
 ```
 
-<br/>
 
 ### Find activity name using `adb`
 
