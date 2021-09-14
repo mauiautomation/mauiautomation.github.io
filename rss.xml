@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MAUI Automation]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 14 Sep 2021 09:01:11 GMT</lastBuildDate><item><title><![CDATA[Determine android app activity name using adb]]></title><description><![CDATA[When setup Appium driver options for Android, we need to specify app activity. Something like this: Or if app has a  then we need to wait…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/determine-android-app-activity-using-adb/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/determine-android-app-activity-using-adb/</guid><pubDate>Fri, 03 Sep 2021 16:30:15 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MAUI Automation]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 14 Sep 2021 09:18:34 GMT</lastBuildDate><item><title><![CDATA[Determine android app activity name using adb]]></title><description><![CDATA[When setup Appium driver options for Android, we need to specify app activity. Something like this: Or if app has a  then we need to wait…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/determine-android-app-activity-using-adb/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/determine-android-app-activity-using-adb/</guid><pubDate>Fri, 03 Sep 2021 16:30:15 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 585px; &quot;
     &gt;
@@ -29,9 +29,13 @@
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;When setup Appium driver options for Android, we need to specify app activity. Something like this:&lt;/p&gt;
+&lt;font size=2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;csharp&quot;&gt;&lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;_driverOptions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;AddAdditionalCapability&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;appActivity&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*.MainActivity&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/font&gt;
 &lt;p&gt;Or if app has a &lt;code class=&quot;language-text&quot;&gt;SplashActivity&lt;/code&gt; then we need to wait for the &lt;code class=&quot;language-text&quot;&gt;MainActivity&lt;/code&gt;&lt;/p&gt;
+&lt;font size=2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;csharp&quot;&gt;&lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;_driverOptions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;AddAdditionalCapability&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;appWaitActivity&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*.MainActivity&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/font&gt;
 &lt;p&gt;It is quite common for app main activity to be &lt;code class=&quot;language-text&quot;&gt;com.example.app.mainActivity&lt;/code&gt;. However, this is not always the case. Sometimes, main activity can be named differently.&lt;/p&gt;
 &lt;p&gt;One example of this is apps that built using xamarin, by defaut, if no activity name is specified by developer. The main activity will be appended with a hash to help avoiding namespace conflict. More details can be read &lt;a href=&quot;https://docs.microsoft.com/en-au/xamarin/android/platform/android-manifest&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Without the correct activity name specified, Appium will throw this error:&lt;/p&gt;
@@ -56,11 +60,13 @@ e1418fa6	device&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Launch the app we want to find activity name&lt;/p&gt;
 &lt;p&gt;Then run this command&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;dumpsys window windows &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; -E &lt;span class=&quot;token string&quot;&gt;&apos;mCurrentFocus&apos;&lt;/span&gt;    &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This will output the name of the current focus activity:
-Example output&lt;/p&gt;
+&lt;p&gt;This will output the name of the current focus activity.&lt;/p&gt;
+&lt;p&gt;Example output:
+&lt;font size=2&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;OnePlus3T:/ $ dumpsys window windows &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; -E &lt;span class=&quot;token string&quot;&gt;&apos;mCurrentFocus&apos;&lt;/span&gt; 
   &lt;span class=&quot;token assign-left variable&quot;&gt;mCurrentFocus&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;Window&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;844329b u0 com.whatsapp/com.whatsapp.registration.EULA&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-OnePlus3T:/ $ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Mobile Automation with Appium in .NET - Setup and writing first test]]></title><description><![CDATA[Install Android Studio and XCode First Android Studio and Xcode need to be installed. Setup enviroments variable Mac Add these to your  (or…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/setup-appium-dotnet/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/setup-appium-dotnet/</guid><pubDate>Sun, 29 Aug 2021 09:06:15 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+OnePlus3T:/ $ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/font&gt;</content:encoded></item><item><title><![CDATA[Mobile Automation with Appium in .NET - Setup and writing first test]]></title><description><![CDATA[Install Android Studio and XCode First Android Studio and Xcode need to be installed. Setup enviroments variable Mac Add these to your  (or…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/setup-appium-dotnet/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/setup-appium-dotnet/</guid><pubDate>Sun, 29 Aug 2021 09:06:15 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -129,7 +135,8 @@ OnePlus3T:/ $ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><ite
     &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;PackageReference&lt;/span&gt; Include&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;NUnit3TestAdapter&quot;&lt;/span&gt; Version&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;4.0.0&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;ItemGroup&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Create first android test:&lt;/h2&gt;
-&lt;p&gt;Create &lt;code class=&quot;language-text&quot;&gt;FirstAndroidTest.cs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Create &lt;code class=&quot;language-text&quot;&gt;FirstAndroidTest.cs&lt;/code&gt;
+&lt;font size=2&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;csharp&quot;&gt;&lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IO&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;NUnit&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Framework&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -173,6 +180,7 @@ OnePlus3T:/ $ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><ite
         &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/font&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt; Appium supports both UIAutomator2 and Espresso for Android UI Automation test, we’ll be using UIAutomator2 this time.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -198,7 +206,8 @@ OnePlus3T:/ $ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><ite
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;node&quot;&gt;&lt;pre class=&quot;language-node&quot;&gt;&lt;code class=&quot;language-node&quot;&gt;[HTTP] &amp;lt;-- POST /wd/hub/session 200 5696 ms - 1059&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The test app launch and our test run.&lt;/p&gt;
 &lt;h2&gt;Create iOS first test&lt;/h2&gt;
-&lt;p&gt;Create &lt;code class=&quot;language-text&quot;&gt;FirstIOSTest.cs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Create &lt;code class=&quot;language-text&quot;&gt;FirstIOSTest.cs&lt;/code&gt;
+&lt;font size=2&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;csharp&quot;&gt;&lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IO&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;NUnit&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Framework&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -242,6 +251,7 @@ OnePlus3T:/ $ &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><ite
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/font&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;(1)&lt;/strong&gt; XCUITest is used for testing iOS&lt;/p&gt;
 &lt;/blockquote&gt;
